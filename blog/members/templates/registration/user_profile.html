@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<h1>Author's Profile</h1>
+
+<hr>
+<br/>
+
+
+
+
+<div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-2">
+        {% if page_user.profile_pic %}
+            <img src="{{ page_user.profile_pic.url }}" class="img-fluid rounded-start">
+
+        {% else %}
+            <img src="{% static "blog/images/default.jpg" %}" class="card-img">
+        {% endif %}
+      </div>
+      <div class="col-md-10">
+        <div class="card-body">
+          <h5 class="card-title">{{ page_user.user.first_name }}
+            {{ page_user.user.last_name }}
+          </h5>
+          <p class="small text-muted">
+            {% if page_user.website_link %}
+                <a href="{{ page_userr.website_link }}">Website</a> |
+            {% endif %}
+
+            {% if page_user.facebook_link %}
+                <a href="{{ page_userr.facebook_link }}">FaceBook</a> |
+            {% endif %}
+
+            {% if page_user.twitter_link %}
+                <a href="{{ page_userr.twitter_link }}">Twitter</a> |
+            {% endif %}
+
+            {% if page_user.instagram_link %}
+                <a href="{{ post.author.instagram_link }}">Intagram</a>
+            {% endif %}
+
+
+          </p>
+          <p class="card-text">{{ page_user.bio }}</p>
+          {% comment %} <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p> {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+<br/>
+<a href="{% url 'home' %}" class="btn btn-primary">Back</a>
+
+<br/><br/>
+<hr/>
+{% endblock %}
+
+
+
+
